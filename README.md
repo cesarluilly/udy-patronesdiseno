@@ -376,4 +376,113 @@ Corremos la applicacion
 ![video16Corrida](./imgReadme/video16Corrida.jpg)
 
 
+# Video 17 Guardando en 2 tablas
+
+Imaginemos que tenemos que agregar una cerveza, pero 
+esa cerceza podria ser de una nueva marca que no tenemos
+en nuestra base de datos, entonces el problema radica
+que tenemos que ir a las 2 tablas.
+
+El patron UnitOfWork nos va ayudar con este tema.
+
+A continuacion vamos a agregar un nuevo ViewModel clase con 
+el nombre `FormBeerViewModel` con se muestra en la siguiente 
+imagen
+
+![video17ForBeerViewModel](./imgReadme/video17ForBeerViewModel.jpg)
+
+Despues vamos a BeerController y agregamos 2 metodos
+
+![video17DosMetodosAdd](./imgReadme/video17DosMetodosAdd.jpg)
+
+![video16AddPostRedefinido](./imgReadme/video16AddPostRedefinido.jpg)
+
+
+Ahora vamos a agregar una vista vacia al primer metodo Add de tipo
+[Get] que habiamos agregado
+
+![video17AddViewToFirsAdd](./imgReadme/video17AddViewToFirsAdd.jpg)
+
+Y agregamos el siguiente codigo.
+```html
+@model DesignPatternsAsp.Models.ViewModels.FormBeerViewModel
+
+<form asp-controller="Beer" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name"/>
+        <span asp-validation-for="Name" class="text-danger"></span>        
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Style"></label>
+        <input class="form-control" asp-for="Style"/>
+        <span asp-validation-for="Style" class="text-danger"></span>        
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BrandId"></label>
+        <select class="form-control" asp-for="BrandId" asp-items="@ViewBag.Brands">
+            <option value="">--- Selecciona marca ---</option>
+        </select>
+        <span asp-validation-for="BrandId" class="text-danger"></span>        
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OtherBrand"></label>
+        <input class="form-control" asp-for="OtherBrand"/>
+        <span asp-validation-for="OtherBrand" class="text-danger"></span>        
+    </div>
+
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Guardar</button>
+    </div>
+</form>
+
+
+```
+
+Un punto a recordar en .Net 6
+
+![video17NoRequerid](./imgReadme/video17NoRequerid.jpg)
+
+Corridas
+
+![video17CorridaAdd](./imgReadme/video17CorridaAdd.jpg)
+
+![corridaFinalGet](./imgReadme/corridaFinalGet.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
