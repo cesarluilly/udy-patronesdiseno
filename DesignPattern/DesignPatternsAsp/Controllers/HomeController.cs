@@ -1,4 +1,6 @@
-﻿using DesignPatternsAsp.Models;
+﻿using DesignPatterns.Models.Data;
+using DesignPatterns.Repository;
+using DesignPatternsAsp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,14 +10,18 @@ namespace DesignPatternsAsp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IRepository<Beer> _repository;
+
+        public HomeController(ILogger<HomeController> logger, IRepository<Beer> repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Beer> lst = _repository.Get();
+            return View("Index", lst);
         }
 
         public IActionResult Privacy()

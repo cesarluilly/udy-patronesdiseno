@@ -154,3 +154,104 @@ con programacion orientada a objetos. DbSet
 
 - Corrida
 ![video13Corrida](./imgReadme/video13Corrida.jpg)
+
+## Video 14 Implementacion en ASP
+
+Creamos proyecto de bibliotecas de clases en la misma solucion y
+eliminamos la clase por defecto que crea.
+
+![video14LibraryClass](./imgReadme/video14LibraryClass.jpg)
+
+> - DesignPatterns.Models
+
+Agregamos las dependecias nugget a la biblioteca de Clases
+
+Instalamos los siguientes paquetes
+
+    - > Microsoft.EntityFrameworkCore.SqlServer
+    - > Microsoft.EntityFrameworkCore.Tools
+
+![video14nugget](./imgReadme/video14nugget.jpg)
+
+Creamos proyectos de bibliotecas de clases en la misma solucion y
+eliminamos la clase por defecto que crea.
+
+> - DesignPatterns.Repository
+
+Ahora vamos a establecer el Startup Project al **DesignPatterns.Models**
+
+> **NOTA** Esto es importante ya que de lo contrario no podemos
+hacer scafold
+
+![video14startupProject](./imgReadme/video14startupProject.jpg)
+
+Ahora abrimos una consola de Paqutetes Nugget y ejecutamos el
+siguiente comando 
+
+> **Asegurarnos que estamos en el proyecto DesignPatterns.Models**
+
+`Scaffold-DbContext "Server=DESKTOP-ANEEUI8;Database=DesignPattern;User=DBUser;Password=DBUser2019" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data`
+
+![video14Scafold](./imgReadme/video14Scafold.jpg)
+
+Ahora vamos al proyecto de DesignPatterns.Repository y agregamos
+referencias de proyecto de **DesignPatterns.Models**
+
+![video14referenceProject](./imgReadme/video14referenceProject.jpg)
+
+![video14AddRef](./imgReadme/video14AddRef.jpg)
+
+Ahora en el proyecto DesignPatterns.Repository vamos a agregar 
+la interfaz **IRepository** y la clase **Repository** 
+y despues vamos a copiar el codigo que habiamos echo en el 
+video anterior.
+
+
+![video14ClassInterfaceRepository](./imgReadme/video14ClassInterfaceRepository.jpg)
+
+
+Ahora lo que necesitamos es ver como implementarlo en el 
+proyecto de DesignPatternsAsp
+
+Agregamos las dependecias de proyecto a el proyecto de 
+DesignPatternsAsp
+
+![video14DependencesAsp](./imgReadme/video14DependencesAsp.jpg)
+
+Ahora vamos a ir a Startup(Version .Net 5  o inferior) o a
+Program.vs (caso de .Net 6 pero tambien podemos crear el 
+Startup.cs y personalizarlo)
+
+A continuacion vamos a ver los alcances de las inyecciones
+de dependencia en .Net Core
+
+* **services.AddScoped** .- Es a nivel de solicitud, es decir 
+va a ser objetos diferentes por solicitud.
+
+* **services.AddTransient** .- Solo es recomendable en funciones, 
+es decir cuando se procesa algo y la funcion devuelve algo.
+
+* **services.AddSingleton** .-  Se crean la primera vez que se solicitan (o cuando se ejecuta ConfigureServices si especifica una instancia allí) y luego cada solicitud posterior utilizará la misma instancia.
+
+y para eso necesitamos agregar la cadena de coneccion al 
+appsetting.json para despues hacer una inyeccion de 
+dependencia.
+
+![video14AppSettingsStringCon](./imgReadme/video14AppSettingsStringCon.jpg)
+
+Agrego la inyeccion de dependecia en Program.cs ya que estamos
+en .Net 6
+
+![video14Inyeccion](./imgReadme/video14Inyeccion.jpg)
+
+Agregamos codigo al contexto para devolver las beers.
+
+![video14HomeController](./imgReadme/video14HomeController.jpg)
+
+Nos vamos a la vista para agregar codigo y probar.
+![video14ViewHome](./imgReadme/video14ViewHome.jpg)
+
+
+
+
+
