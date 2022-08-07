@@ -6,6 +6,23 @@ https://www.udemy.com/course/aprender-patrones-de-disenos-aplicados-en-asp-net/
 
 ![curso](./imgReadme/curso.jpg)
 
+## Preparando el Ambiente
+- Creamos un proyecto de **consola**
+- Creamos un proyecto en la misma solucion de **ASP.NET Core Web 
+App (Model-View-Controller)**
+- Creamos proyecto en la misma solucion de **Library Class**
+
+Namas como introduccion. 
+
+* Un controlador es el que recibe la solicitu de un cliente, 
+la trata, la maneja junto con el modelo y si es necesario 
+regresar una vista siendo la vista contenido HTML, va
+a regresar una vista.
+
+* Y la herramienta de biblioteca nos sirve para tener mis
+herramientas separadas y pueda utilizarla en otros proyectos 
+sin tener que volverlos a programar.
+
 
 # Seccion 6: Repository
 
