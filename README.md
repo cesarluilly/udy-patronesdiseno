@@ -252,6 +252,61 @@ Nos vamos a la vista para agregar codigo y probar.
 ![video14ViewHome](./imgReadme/video14ViewHome.jpg)
 
 
+# Seccion 7 UnitOfWork
+
+## Video 15 Explicacion
+
+Es una forma para trabajarse en conjunto.
+Por ejemplo
+
+En la siguiente imagen vemos que hay 2 save(), y eso representa
+que se van a hacer 2 conecciones a la base de datos.
+
+![video14Save](./imgReadme/video14Save.jpg)
+
+Entonces lo que nos propone el patron UnitOfWork es que 
+si tenemos un conjunto de peticiones a la base de datos, podemos 
+agruparlas y mandarlas juntas.
+
+Entonces por lo tanto este es un extra al patron repository.
+
+![video15Df](./imgReadme/video15Df.jpg)
+
+UnitOfWork tambien tiene un comportamiento similar a singleton, 
+es decir, si el objeto ha sido solicitado en un esquema de 
+trabajo, es decir se crea el objeto, pero si alguien vuelve
+a solicitar ese objeto, entonces te devuelvo el objeto
+que ya habia creado sin necesida de tener que recrearlo.
+
+Lo que hacemos con UnitOfwork es agrupar los repositorios
+en una parte, en un grupo y ese grupo va a trabajar como uno
+cuando se trabaje con la solicitud de la DB.
+
+La razon de esto, es que se tienen que aislar estas partes, 
+porque no todos los programadores trabajan en el mismo proyecto, 
+si no que a lo mejor la capa de modelo lo trabajan otro
+grupo de programadores, y la capa de negocio la trabaja
+otro grupo de programadores, y es por eso que las capas
+deber ser invisibles ya que ninguna capa tiene que saber
+de como esta escructurado y los detalles de la otra capa.
+
+![video15InterClass](./imgReadme/video15InterClass.jpg)
+
+Vamos a program y guardamos 2 elementos diferentes
+
+![video15UnitOfWork](./imgReadme/video15UnitOfWork.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

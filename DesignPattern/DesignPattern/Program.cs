@@ -1,36 +1,33 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DesignPattern.Models;
 using DesignPattern.RepositoryPattern;
+using DesignPattern.UnitOfWorkPattern;
 
 Console.WriteLine("Hello, World!");
 
 using var context = new DesignPatternContext();
-var beerRepository = new Repository<Beer>(context);
-var beer = new Beer() { Name = "Fuller", Style = "Strong Ale" };
-beerRepository.Add(beer);
-beerRepository.Save();
 
-foreach (var b in beerRepository.Get())
+var unitOfWork = new UnitOfWork(context);
+
+//                                      //Obtenemos el repositorio de Beers.
+var beersRepo = unitOfWork.Beers;
+
+//                                      //Creamos nueva cerveza y agregamos al repositorio.
+var beer = new Beer(){
+    Name = "Fuller",
+    Style = "Porter"
+    };
+beersRepo.Add(beer);
+
+var brandsRepo = unitOfWork.Brands;
+var brand = new Brand()
 {
-    Console.WriteLine(b.Name);
-}
-//                                              //Eliminamos el elemento.
-beerRepository.Delete(4);
+    Name = "Fuller"
+};
+brandsRepo.Add(brand);
 
-//                                              //Creamos un objeto de otro tipo.
-var brandRepository = new Repository<Brand>(context);
-var brand = new Brand() { Name = "FullerBrand"};
-
-brandRepository.Add(brand);
-brandRepository.Save();
-
-foreach (var b in brandRepository.Get())
-{
-    Console.WriteLine(b.Name);
-}
-
-
-
+//                                      //Solo hacemos 1 conexion para guardar 2 elementos.
+unitOfWork.Save();
 
 
 
