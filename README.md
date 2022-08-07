@@ -58,11 +58,36 @@ Agregamos el codigo y corremos
 
 ![run1](./imgReadme/run1.jpg)
 
+## 12 Explicacion 
+
+Imaginemos que tenemos que tenemos diferentes fuentes de datos
+tal como Dapper, EntityFramework o un Api, entonces el 
+patro repository es un intermediario para esta informacion.
+
+Lo que hace el patron Repository es darte una manera de que 
+accedas a esos datos sin que la aplicacion se preocupe de que 
+es lo que esta pasando en repository, y este es un 
+patron de diseño escructural.
+
+Y esto es con la finalidad de que la aplicacion no tiene que 
+enterarse si cuando vas por la tabla usuario vas a un API o 
+cuando vas por cerveza vas a entity framework, entonces 
+por lo tanto para la aplicacion tiene que ser invisible, 
+entonces lo unico que debe de hacer la aplicacion es invocar
+un metodo sin importarle que es lo que esta pasando por detras.
 
 
+![dfRepository](./imgReadme/dfRepository.jpg)
 
+### Por ahorita vamos a hacer una implementacion sencilla y despues la volvermos mas compleja.
 
+- Agregamos la interface con los contratos dados y la clase repository
 
+![ibeer](./imgReadme/InclRepository.jpg)
+
+Hacemos uso del repositorio y corremos la aplicacion
+
+![video12corrida](./imgReadme/video12corrida.jpg)
 
 
 
