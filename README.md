@@ -297,16 +297,83 @@ Vamos a program y guardamos 2 elementos diferentes
 ![video15UnitOfWork](./imgReadme/video15UnitOfWork.jpg)
 
 
+## Video 16 Implementacion en ASP
+
+Creamos la siguiente DB
+
+```sql
+DROP database DesignPattern;
+
+CREATE DATABASE DesignPattern;
+USE DesignPattern;
 
 
+CREATE TABLE Brand
+(
+    Pk int IDENTITY (1, 1) not null,
+    CONSTRAINT Pk_Brand PRIMARY KEY (Pk),
+    
+    Name NVARCHAR(50) NOT NULL,
+);
+GO
+
+CREATE TABLE Beer
+(
+    Pk int IDENTITY (1, 1) not null,
+    CONSTRAINT Pk_Beer PRIMARY KEY (Pk),
+    
+    Name NVARCHAR(50) NOT NULL,
+    Style NVARCHAR(50) NOT NULL,
+
+    PkBrand int null,
+    CONSTRAINT FK_Beer_Brand_PkBrand FOREIGN KEY (PkBrand) REFERENCES Brand (Pk)
+    
+);
+GO
+
+INSERT into brand (Name) values ('cesBrand');
+insert into beer values ('Corona', 'Style1',1)
+
+```
+
+Nos ubicamos en el proyecto de DesignPatterns.Models y ejecutamos
+`Scaffold-DbContext "Server=DESKTOP-ANEEUI8;Database=DesignPattern;User=DBUser;Password=DBUser2019" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data`
+
+para actualizar nuestros modelos.
+
+Ahora vamos a crear nuestra interface y clase de UnitOfWork
+en nuestro proyecto DesignPatterns.Repository y el codigo 
+tiene que ser identico que lo que icimos en la seccion anterior.
 
 
+![video16UnitOfWork](./imgReadme/video16UnitOfWork.jpg)
+
+Ahora lo que vamos a hacer es inyectar la Interfaz
+IUnitOfWork
+
+![video16Inyeccion](./imgReadme/video16Inyeccion.jpg)
+
+Ahora agregamos el controlador
+
+![video16AddController](./imgReadme/video16AddController.jpg)
 
 
+Agregamos el modelo y el codigo en el controlador
+
+![video16ViewModelAddCode](./imgReadme/video16ViewModelAddCode.jpg)
+
+Agregamos una vista vacia al index
+
+![video16Addview](./imgReadme/video16Addview.jpg)
 
 
+Agregamos el siguiente codigo a la vista.
 
+![video16ViewIndexCode](./imgReadme/video16ViewIndexCode.jpg)
 
+Corremos la applicacion 
+
+![video16Corrida](./imgReadme/video16Corrida.jpg)
 
 
 

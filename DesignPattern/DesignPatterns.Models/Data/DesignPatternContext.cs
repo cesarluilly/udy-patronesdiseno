@@ -40,6 +40,10 @@ namespace DesignPatterns.Models.Data
                 entity.Property(e => e.Name).HasMaxLength(50);
 
                 entity.Property(e => e.Style).HasMaxLength(50);
+
+                entity.HasOne(d => d.PkBrandNavigation)
+                    .WithMany(p => p.Beers)
+                    .HasForeignKey(d => d.PkBrand);
             });
 
             modelBuilder.Entity<Brand>(entity =>

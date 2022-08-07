@@ -8,5 +8,8 @@ namespace DesignPatterns.Models.Data
         public int Pk { get; set; }
         public string Name { get; set; } = null!;
         public string Style { get; set; } = null!;
+        public int? PkBrand { get; set; }
+
+        public virtual Brand? PkBrandNavigation { get; set; }
     }
 }

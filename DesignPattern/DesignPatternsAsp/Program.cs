@@ -14,6 +14,14 @@ builder.Services.AddDbContext<DesignPatternContext>(options =>
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
+//                          //Hay que recordar que todo lo inyectado en la
+//                          //  siguiente linea, va a hacer uso de todo
+//                          //  de todo lo inyectado aca arriba.
+//                          //Por ejemplo el Contexto inyectado arriba, 
+//                          //  se va a inyectar magicamente en el constructor
+//                          //  de la clase UnitOfWork.
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
