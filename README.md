@@ -89,6 +89,51 @@ Hacemos uso del repositorio y corremos la aplicacion
 
 ![video12corrida](./imgReadme/video12corrida.jpg)
 
+## 13 Repository con Generics
 
+Ahora agregaos una nueva tabla 
 
+```sql
 
+USE DesignPattern;
+
+CREATE TABLE Brand
+(
+    Pk int IDENTITY (1, 1) not null,
+    CONSTRAINT Pk_Brand PRIMARY KEY (Pk),
+    
+    Name NVARCHAR(50) NOT NULL,
+);
+GO
+```
+
+Ahora vamos a generar nuestro modelo a traves de scafold abriendo
+una consola de nugget y tecleando el siguiente comando
+
+> `Scaffold-DbContext "Server=DESKTOP-ANEEUI8;Database=DesignPattern;User=DBUser;Password=DBUser2019" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force`
+
+Nota. Aqui al final agregamos **force** para que me agregue la 
+el nuevo modelo de la nueva tabla.
+
+Generic en este caso lo vamos a utilizar para que una clase se 
+comporte igual para distintos fuentes de modelo.
+
+Entonces las ventajas de utilizar un repositorio Generico es que
+para cada nueva tabla no vamos a crear nueva interfaz, 
+si no que con la clase generica nos ahorramos todo eso.
+
+![irepogeneric](./imgReadme/irepogeneric.jpg)
+
+Nota. Vamos a utilizar el potencial de DbSet ya que esto te 
+permite convertir esas tablas en clases para poder trabajar
+con programacion orientada a objetos. DbSet
+
+- Creamos nuestra clase Repository
+
+![video13RepositoryClass](./imgReadme/video13RepositoryClass.jpg)
+
+- Agregamos codigo de corrida 
+![video13CodigoProgram](./imgReadme/video13CodigoProgram.jpg)
+
+- Corrida
+![video13Corrida](./imgReadme/video13Corrida.jpg)

@@ -17,6 +17,7 @@ namespace DesignPattern.Models
         }
 
         public virtual DbSet<Beer> Beers { get; set; } = null!;
+        public virtual DbSet<Brand> Brands { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,6 +40,16 @@ namespace DesignPattern.Models
                 entity.Property(e => e.Name).HasMaxLength(50);
 
                 entity.Property(e => e.Style).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Brand>(entity =>
+            {
+                entity.HasKey(e => e.Pk)
+                    .HasName("Pk_Brand");
+
+                entity.ToTable("Brand");
+
+                entity.Property(e => e.Name).HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);
