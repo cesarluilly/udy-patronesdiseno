@@ -23,6 +23,39 @@ a regresar una vista.
 herramientas separadas y pueda utilizarla en otros proyectos 
 sin tener que volverlos a programar.
 
+# Seccion 3 Singleton
+
+## Video 5 Explicacion
+
+Este patron nos va a servir para crear objetos, y aseguraremos que si o si solo se cree un objeto y esto puede ser por performance, 
+algun tercero que requiere que solo haya una unica instancia.
+
+![singletonLogCode](./imgReadme/singletonLogCode.jpg)
+
+Program
+![programSingletonLog](./imgReadme/programSingletonLog.jpg)
+
+Despues de la corrida
+![singletonLog](./imgReadme/singletonLog.jpg)
+
+## Video 6 Implementacion en Asp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Seccion 6: Repository
 
