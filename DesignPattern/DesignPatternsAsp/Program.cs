@@ -1,11 +1,16 @@
 using DesignPatterns.Models.Data;
 using DesignPatterns.Repository;
+using DesignPatternsAsp.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//                          //Hacemos una inyeccion de MyConfig para ser obtenido
+//                          //  en cualquier controlador.
+builder.Services.Configure<MyConfig>(builder.Configuration.GetSection("MyConfig"));
 
 builder.Services.AddDbContext<DesignPatternContext>(options =>
 {

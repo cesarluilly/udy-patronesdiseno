@@ -40,14 +40,65 @@ Despues de la corrida
 
 ## Video 6 Implementacion en Asp
 
+Un controlador es el que recibe la solicitud de un cliente la 
+trata, la maneja junto con el modelo, y si es adecuado regresar 
+una vista siendo la vista contenido HTML, te regresa la vista.
 
+> Nota. sealed ("Sellado") de `public sealed class Log` decimos
+que la clase Log no se va a poder heredar.
 
+Creamos el proyecto Tools en donde alojamos la clase Singleton
+de Log y ademas agregamos referencias a nuestro proyecto 
+de aspnet 
+![video6Referencia](./imgReadme/video6Referencia.jpg)
 
+> * **Implementacion 1**
 
+![SingletonLogimplementacion1asp](./imgReadme/SingletonLogimplementacion1asp.jpg)
 
+Corrida 
+![CorridaAspLog](./imgReadme/CorridaAspLog.jpg)
 
+![corridaLogAsp](./imgReadme/corridaLogAsp.jpg)
 
+> * **Implementacion 2**
 
+Agregamos configuracion de Path en appsettings.
+![video6AppSettingAdd](./imgReadme/video6AppSettingAdd.jpg)
+
+Agregamos una clase que va a ser como la representacion de
+lo que agregamos en MyConfig
+
+![video7ConfigurationClass](./imgReadme/video7ConfigurationClass.jpg)
+
+Hacemos una Inyeccion de dependencia de MyConfiguracin en
+Programa para versiones Net 6 y para Net 5 Inferior en Startup.
+
+![Video7InyeccionConfiguracion](./imgReadme/Video7InyeccionConfiguracion.jpg)
+
+Recibimos lo que se inyecto en el controlador
+![video7InyeccionDeDependecia](./imgReadme/video7InyeccionDeDependecia.jpg)
+
+Hacemos uso de la variable que recibe la inyeccion
+![video7ObjInyectadoUtilizado](./imgReadme/video7ObjInyectadoUtilizado.jpg)
+
+> **Nota** De esta manera si en un futuro decidimos guardar en
+otra ruta los Logs, lo podremos cambiar facilmente.
+
+Ahora si nosotros estamos trabajando con hilos podemos hacer un 
+truco ya que podria suceder que dos hilos entren en el mismo 
+instante y por lo cual van a crear 2 instancias diferentes
+pero se tendra al final la ultima creada lo cual no es correcto.
+
+> Hay una propiedad en .Net que se llama `lock` que lo que
+va a hacer es que mientras esta un hilo trabajando con este
+atributo no puede trabajar otro hilo, entonces con la siguiente
+instruccion o truco, decimos que nos proteja la variable 
+`_protect` y mientras se esta protegindo el otro hilo va a estar
+en espera y de esta manera estamos protegiendolo para cuando 
+estamos trabajando con hilos.
+
+![video7ProtegiendoDeHilos](./imgReadme/video7ProtegiendoDeHilos.jpg)
 
 
 

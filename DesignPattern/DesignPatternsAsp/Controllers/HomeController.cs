@@ -1,31 +1,35 @@
 ﻿using DesignPatterns.Models.Data;
 using DesignPatterns.Repository;
+using DesignPatternsAsp.Configuration;
 using DesignPatternsAsp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Diagnostics;
+using Tools;
 
 namespace DesignPatternsAsp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
+        private readonly IOptions<MyConfig> _config; 
         private readonly IRepository<Beer> _repository;
 
-        public HomeController(ILogger<HomeController> logger, IRepository<Beer> repository)
+        public HomeController(IOptions<MyConfig> config, IRepository<Beer> repository)
         {
-            _logger = logger;
+            _config = config;
             _repository = repository;
         }
 
         public IActionResult Index()
         {
+            Log.GetInstance(_config.Value.PathLog).Save("Entro a Index");
             IEnumerable<Beer> lst = _repository.Get();
             return View("Index", lst);
         }
 
         public IActionResult Privacy()
         {
+            Log.GetInstance(_config.Value.PathLog).Save("Entro a Privacy");
             return View();
         }
 
