@@ -100,13 +100,70 @@ estamos trabajando con hilos.
 
 ![video7ProtegiendoDeHilos](./imgReadme/video7ProtegiendoDeHilos.jpg)
 
+# Seccion 4: Factory Method
+## Video 7 Explicacion
 
+Imagina que tienes una fabrica, esta fabrica hace productos,
+estos productos pueden ser de distinto tipo, entonces tu puedes
+tener un conjunto de fabricas.
 
+Ahora bien, factory method es una fabrica creadora de objetos.
 
+![video7FactoryMethodDiagram](./imgReadme/video7FactoryMethodDiagram.jpg)
 
+La practica nos indica que debemos de tener una clase abstracta
+llamada **creator**(creador) y vamos a tener clases que hereden de
+Creator llamada **ConcreteCreator**(creadores concretos) y
+estas van a ser la fabricas que van a crear productos.
 
+Ahora vamos a tener una interfaz llamada Product(Producto) que
+va a ser la que va a categorizar a los productos que vamos a
+crear, por ejemplo, podemos tener una fabrica que cree productos, 
+por ejemplo un producto en una tienda ya sea papitas, cerveza, 
+etc, pero tambien un producto podria ser un Kit de productos, 
+un combo de productos, una promocion, al fina de todo va 
+a tener una iteracion de ser una venta.
 
+Ahora, tu puedes crear una fabrica para crear productos, para 
+crear clases, para crear objetos de clases que van a implementar
+la interfaz producto. 
 
+Que ventajas tenemos?
+
+Tenemos que la responsabilidad de crear va a estar en la fabrica, 
+es decir, si tu estos objetos los utilizas en muchisimos lados, 
+tu vas a tener la responsabilidad solamente en un lado  para 
+crear el objeto. 
+
+Tu Objeto podria tener muchisimos parametros para su creacion
+y esos parametros de su creacion tu no vas a tener la 
+responsabilidad mas que un solo lado .
+
+Otras de las ventajas es que podemos tener objetos que son muy
+parecidos, los cuales vamos a categorizar con una interfaz
+**product** y si necesitamos crear otro objeto que es parecido, 
+podemos tener esta misma jeraquizacion sin tener que reinventar
+la rueda para crear este nuevo producto que a lo mejor tiene
+otros atributos o metodos.
+
+Y este es otra de las ventajas, la flexibilidad que te da para
+no recrear la rueda.
+
+### Codigo implementacion
+
+![video7CreatorClass](./imgReadme/video7CreatorClass.jpg)
+
+![video7ConcreteCreator](./imgReadme/video7ConcreteCreator.jpg)
+
+![video7ConcreteCreatorClassInternet](./imgReadme/video7ConcreteCreatorClassInternet.jpg)
+
+![video7ConcreteProductReal](./imgReadme/video7ConcreteProductReal.jpg)
+
+![video7InterfaceISale](./imgReadme/video7InterfaceISale.jpg)
+
+![video7Programa](./imgReadme/video7Programa.jpg)
+
+![vido7Corrida](./imgReadme/vido7Corrida.jpg)
 
 # Seccion 6: Repository
 
