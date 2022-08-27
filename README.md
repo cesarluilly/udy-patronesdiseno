@@ -165,6 +165,111 @@ no recrear la rueda.
 
 ![vido7Corrida](./imgReadme/vido7Corrida.jpg)
 
+## Video 8 Implementacion en ASP
+
+En este proyecto lo que vamos a hacer es manejas las 
+ganancias sobre algo que pueden tener muchas reglas que 
+pueden ser engorrosas, y estas reglas a veses tienen distintos
+factores de entrada.
+Por ejemplo, tu puedes vender algo, y este algo puede tener 
+ciertas ganancias porque es local, es decir no estas 
+vendiendo al publico extranjero, ahora este mismo algo
+lo puedes vender al publico extranjero y entonces tendrias
+otro conjunto de reglas que van a alterar la ganancia.
+
+La ganancias de un producto seria eso que tu estas ganando extra
+a lo que te costo el producto.
+
+**Factory method ayuda** bastante cuando tu no sabes aun cuales 
+son esos factores externos, a veses estas apenas programando
+y el cliente se le ocurre agregar nuevos factores.
+
+Estos factores son elementos que sirber para construir el objeto.
+
+Entonces las ganancias pueden ser representadas como un objeto, 
+el cual va a tener un metodo que va a calcular la ganancia
+dependiendo si es un producto en venta local, o publico
+extranjero y de repente podra tener otro, por ejemplo, 
+venta por internet, etc. entonces aqui vamos a representar 
+este tipo de ganancias.
+
+Hay 2 cuestiones que debemos de tener muy en claro en 
+**Factory Method**, hay 2 instancias generales
+* Una Fabrica o Creador 
+* Y un producto a Crear.
+
+Ademas que tenemos 2 interfaces que nos sirven solamente para
+dar orden
+* Una que nos va a servir para dar una orden de los productos
+creados 
+
+* Y otra para categorizar la fabrica de sus productos.
+
+### Ahora vamos al Codigo.
+
+Creamos la carpeta earn y ahi es donde vamos a poner toda
+la logistica de nuestras fabricas ya que vamos a tener
+varias fabricas.
+Y las fabricas van a representar la creacion de un
+objeto y en este caso este objeto va a tener la funcionalidad
+de calcular las ganancias.
+
+> * Agregamos la interfaz IEarn
+![video8IEarn](./imgReadme/video8IEarn.jpg)
+
+> * Creamos la clase Local Earn con implementacion de IEarn
+![video8LocalEarn](./imgReadme/video8LocalEarn.jpg)
+
+> * Creamos EarnFactory o fabrica
+![video8EarnFactory](./imgReadme/video8EarnFactory.jpg)
+
+> * Creamos la categoria de Fabrica que es LocalEarnFactory
+![LocalEarnFactory](./imgReadme/LocalEarnFactory.jpg)
+
+> * Agregamos controlador ProductDetails y la vista a nuestro nuevo controlador
+![Video8AgregandoVista](./imgReadme/Video8AgregandoVista.jpg)
+
+> * Hacemos instancia de la fabrica y creamos nuestro objeto
+ganancia local.
+![video8ProducController](./imgReadme/video8ProducController.jpg)
+
+> * Agregamos codigo a nuestra vista
+![video8View](./imgReadme/video8View.jpg)
+
+> * Corrida 1
+![video8corrida1](./imgReadme/video8corrida1.jpg)
+
+
+**Pero despues llega mi cliente y dise que quiere tener otras reglas para
+un total de publico extranjero y pues entonces factory method
+siempre se va a acoplar cuando falten requerimientos.**
+
+> * Agregamos ForeingEarn
+![video8ForeingEarn](./imgReadme/video8ForeingEarn.jpg)
+
+> * Agregamos ForeingFactory
+![video8ForeingFactory](./imgReadme/video8ForeingFactory.jpg)
+
+> * Instanciamos la fabrica y creamos el objeto en el Controller
+![video8AddcodeController](./imgReadme/video8AddcodeController.jpg)
+
+> * Agregamos codigo a la vista
+![video8AddCodeToView](./imgReadme/video8AddCodeToView.jpg)
+
+> * Corrida 2
+![video8Corrida2](./imgReadme/video8Corrida2.jpg)
+
+
+Entonces cuando hay un nuevo requerimiento o cambia un 
+requirimiento, factory method te permite crecer de manera
+lineal si afectar a otras funcionalidades y esta es la magia.
+
+> **NOTA** Factory method tiene otra representacion que es como
+un swich case, pero en este caso esta representacion es 
+la que nos gusta mas ya que es mas flexible y ademas es mejor
+deacuerdo a la experiencia, solo es como nota ya que
+existen diferentes implementaciones de Factory Method. 
+
 # Seccion 6: Repository
 
 ## 11. Entity Framework
