@@ -5,15 +5,24 @@ namespace DesignPatternsAsp.Controllers
 {
     public class ProductDetailController : Controller
     {
+        private LocalEarnFactory _localEarnFactory;
+        private ForeingEarnFactory _foreignEarnFactory;
+        public ProductDetailController(LocalEarnFactory localEarnFactory,
+            ForeingEarnFactory foreignEarnFactory)
+        {
+            _localEarnFactory = localEarnFactory;
+            _foreignEarnFactory = foreignEarnFactory;
+        }
+
+
         public IActionResult Index(decimal total)
         {
             //              //Factories o fabricas.
-            LocalEarnFactory localEarnFactory = new LocalEarnFactory(0.20m);
             ForeingEarnFactory foreignEarnFactory = new ForeingEarnFactory(0.30m, 20);
 
             //              //Products.
-            var localEarn = localEarnFactory.GetEarn();
-            var foreingEarn = foreignEarnFactory.GetEarn();
+            var localEarn = _localEarnFactory.GetEarn();
+            var foreingEarn = _foreignEarnFactory.GetEarn();
 
             //              //Total.
 

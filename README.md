@@ -271,7 +271,7 @@ deacuerdo a la experiencia, solo es como nota ya que
 existen diferentes implementaciones de Factory Method. 
 
 # Seccion 5: Dependency Injection
-
+## Video 9 Explicacion de Inyeccion de Dependencia
 Inyeccion de dependencia es uno de los mas utilizados, y
 de echo si estas utilizando Frameworks de los mas 
 modernos, estaremos seguros que estamos utilizando 
@@ -319,6 +319,67 @@ y simplemente recibir las cosas ya hechas**
 > * ![video9Program](./imgReadme/video9Program.jpg)
 
 > * ![video9Corrida](./imgReadme/video9Corrida.jpg)
+
+## Video 10 Implementacion en ASP de Inyeccion de Dependencia
+
+Cuando icimos el patron de diseño de Factory Method (Ver
+session anterior), dijimos que ibamos a mejorarlo con inyeccion 
+de dependencia.
+
+Codigo Actual a mejorar.
+![video10CodeCurrent](./imgReadme/video10CodeCurrent.jpg)
+
+Ahora bien, si vemos  el controlador es una clase y vemos
+que adentro esta construyendo varios objetos, 
+Nota, pero el patron de inyeccion de dependecia dise que
+los objetos no deberian de construirse ahi, ya que es mucha
+responsabilidad para crearse ahi, ya que por ejemplo, 
+si llegara a cambiar la fabrica `LocalEarnFactory` significa
+que tendriamos que ir a todos los controladores donde 
+se tenga esa creacion para cambiarla, lo cual no se hace
+mantenible.
+
+Bien, ahora en ASP.Net tenemos un mecanismo como en otros
+muchos otros frameworks para tener la inyeccion de 
+dependencia, es decir, no vamos a reinventar la inyeccion 
+de dependencia ya eso ya existe y lo vamos a encontrar en 
+archivo Startup.cs.
+
+Ahora lo que yo quiero es inyectar mi fabrica para que este 
+disponible en todos mis controladores en su constructor, 
+es decir, yo no quiero dar la dependencia al controlador
+para que cree esos objetos que a lo mejor voy a estar 
+utilizando bastante.
+
+Entonces lo que vamos a hacer es inyectarlo con una
+biblioteca que ya tiene ASP llamada dependency injection
+`Using Microsoft.AspNetCore.DependecyInjection`.
+
+Bien, hay 3 formas de inyectar los objetos.
+* **Singleton** .- Vas a tener un objeto para toda tu aplicacion.
+* **Transitorio o Transient** .- Y esto va a hacer un objeto para
+cada servicio, cada solicitud para cada controlador, es decir
+el objeto de un controlador no va a ser el mismo que se este 
+utilizando en otro constructor de otro controlador.
+* **Scope** Va a ser el mismo objeto en la solicitud.
+
+Ahora vamos a inyectar un objeto con ese mecanismo, 
+
+> * Agregamos unas configuraciones al appSettings 
+![video10aspsettings](./imgReadme/video10aspsettings.jpg)
+
+> * Inyectamos las fabricas 
+![video10inyeccionDeFabricas](./imgReadme/video10inyeccionDeFabricas.jpg)
+
+> * Recibimos el objeto inyectado en el controlador
+![video10ContructorController](./imgReadme/video10ContructorController.jpg)
+
+> * Utilizamos las variables inyectadas
+![video10UtilizaVAriablePrivada](./imgReadme/video10UtilizaVAriablePrivada.jpg)
+
+> * Corrida y vemos que todo sigue funcionando igual
+![video10Corrida](./imgReadme/video10Corrida.jpg)
+
 
 
 # Seccion 6: Repository

@@ -2,6 +2,7 @@ using DesignPatterns.Models.Data;
 using DesignPatterns.Repository;
 using DesignPatternsAsp.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Tools.Earn;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,23 @@ builder.Services.Configure<MyConfig>(builder.Configuration.GetSection("MyConfig"
 builder.Services.AddDbContext<DesignPatternContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
+});
+
+//                          //Inyeccion de LocalEarnFactory
+builder.Services.AddTransient((factory) =>
+{
+    return new LocalEarnFactory(builder.Configuration
+        .GetSection("MyConfig").GetValue<decimal>("LocalPercentage"));
+});
+
+//                          //Inyeccion de ForeingEarnFactory
+builder.Services.AddTransient((factory) =>
+{
+    return new ForeingEarnFactory(builder.Configuration
+        .GetSection("MyConfig").GetValue<decimal>("ForeingPercentage"),
+        builder.Configuration
+        .GetSection("MyConfig").GetValue<decimal>("Extra")
+        );
 });
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
