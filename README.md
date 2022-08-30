@@ -270,6 +270,57 @@ la que nos gusta mas ya que es mas flexible y ademas es mejor
 deacuerdo a la experiencia, solo es como nota ya que
 existen diferentes implementaciones de Factory Method. 
 
+# Seccion 5: Dependency Injection
+
+Inyeccion de dependencia es uno de los mas utilizados, y
+de echo si estas utilizando Frameworks de los mas 
+modernos, estaremos seguros que estamos utilizando 
+inyeccion de dependencia.
+
+La inyeccion de dependencia trata sobre quitar la 
+responsabilidad de una clase de crear objetos a partir de
+otras clases, es decir, estas clases no tienen porque saber
+como crear ciertos objetos, pueden tener objetos hijos, 
+pero no tienen que saber como crearlos, lo que tienen que hacer
+es que tu tengas que inyectarle el objeto una ves creado.
+
+Es bien sencillo, como ejemplo, tu eres una persona que le gusta
+la cerveza, pero tu no sabes como se hace la cerveza, 
+simplemente te la dan ya echa, esto es la inyeccion de
+dependencia, si usted quiere tomar cerveza, no tiene
+que saber como se hace una cerveza y simplemente ya te lo dan
+creado, esto es un ejemplo practico de inyeccion de 
+dependencia en la vida real, ya que hay objetos
+que tienen otros objetos, pero no tendriamos que
+tener la responsabilidad internamente en nuestra clase
+de crearlos, si no que los vamos a inyectar.
+
+Las maneras de inyectarlo pueden ser en un metodo o en su
+constructor, regularmente en los proyectos de .Net o 
+ASP la inyeccion va a ser en el contructor de los 
+controladores.
+
+Ahora vamos a ver un ejemplo de porque es importante la inyeccion 
+de dependencia
+
+> **La inyeccion de dependencia vienen a resolver
+unos de los principios Solid, que es el principio de 
+la inversion de la independecia y es practicamente que
+no se debe depender de implementaciones pero si de abstraccion,
+es decir, tu clase no deberia de depender de como crear las cosas
+y simplemente recibir las cosas ya hechas**
+
+
+> * ![viode9implentatcion](./imgReadme/viode9implentatcion.jpg)
+
+
+> * ![drinWatherGobernador](./imgReadme/drinWatherGobernador.jpg)
+
+> * ![video9Program](./imgReadme/video9Program.jpg)
+
+> * ![video9Corrida](./imgReadme/video9Corrida.jpg)
+
+
 # Seccion 6: Repository
 
 ## 11. Entity Framework
