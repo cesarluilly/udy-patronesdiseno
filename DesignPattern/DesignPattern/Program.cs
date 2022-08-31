@@ -1,13 +1,20 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
-using DesignPattern.DependencyInjection;
+using DesignPattern.StrategyPattern;
 
-var beer = new Beer("Pikatus", "Edinger");
+//                          //Quiero que se comporte como un
+//                          //  carro.
+var context = new Context(new CarStrategy());
+context.Run();
 
-var drinkWithBeer = new DrinkWithBeer(10, 1, beer);
+//                          //Quiero que se comporte como un
+//                          //  moto.
+context.Strategy = new MotoStrategy();
+context.Run();
 
-drinkWithBeer.Build();
-
-
+//                          //Quiero que se comporte como un
+//                          //  Bicicleta.
+context.Strategy = new BicycleStrategy();
+context.Run();
 

@@ -811,6 +811,109 @@ Corridas
 
 ![corridaFinalGet](./imgReadme/corridaFinalGet.jpg)
 
+# Seccion 8: Strategy
+## Video 18 Explicacion de Strategy
+
+Es un patron de comportamiento, es decir nos va a ayudar a 
+realizar cierto comportamiento en nuestros objetos.
+
+Ejemplos reales
+* Nos va ayudar cuando tengamos un elemento que tiene que 
+ser exportado a un determindado formato, como excel, pdf, doc, 
+etc, y esto es una accion con distintas estrategias.
+* Otro ejemplo es cuando estamos haciendo un sistema tipo 
+photoshop en el cual vamos a hacer figuras y el dibujar
+un cuadrado es una estrategia y el dibujar un circulo
+es otra estrategia pero la accion dibujar tiene distinto
+comportamiento.
+
+Entonces con el patron strategy vamos a hacer que el manejo de
+este tipo de acciones que se pueden categorizar tengan una
+escalabilidad y un manejo muy practico aparte que una ves
+que creamos el objeto podemos cambiar su comportamiento
+de una manera dinamica.
+
+Se compone de 
+* Interfaz `IStrategy` y este va a tener por lo menos un metodo
+que las clases que lo implementen tienen que cumplir.
+
+* Clase concreta `ConcreteStrategyA`.
+
+* Clase `Context` con la cual vamos a crear el objeto y va 
+a tener un atributo por lo menos que sea del tipo `IStrategy`
+y este va a tener alguna accion, y se va a tener un metodo
+que lo va a hacer es poder cambiar la estrategia.
+
+![strategypattern](./imgReadme/strategypattern.jpg)
+
+Codificando
+> * Interfaz IStrategy
+![video18InterfazIStrategy](./imgReadme/video18InterfazIStrategy.jpg)
+
+> * Clase CarStrategy que implementa de IStrategy
+![video18CarStrategy](./imgReadme/video18CarStrategy.jpg)
+
+> * Clase MotoStrategy que implementa de IStrategy
+![video18MotoStrategy](./imgReadme/video18MotoStrategy.jpg)
+
+
+> * Clase Context que tiene al menos un atributo IStrategy
+![video18ContextStrategy](./imgReadme/video18ContextStrategy.jpg)
+
+> * Aqui vemos 2 practicas del principio SOLID.
+>   * Principio de responsabilidad unica y eso es correr, 
+        como vas a correr? no lo se, y simplemente 
+        yo te doy la estrategia y tu te encargas de correr.
+>    * Principio Open-Close, que es abierto a la extension pero
+        cerrada a la modificacion, y como ejemplo es que me llegue
+        de pronto un nuevo requerimiento, que sea trabajar con 
+        otro tipo de vehiculo, pero si lo icieramos con Switch-Case a la antigua estaria violando este 
+        principio ya que estaria modificando la clase,
+        pero como estoy utilizando el patron strategy, 
+        una nueva clase la estoy agregando una nueva clase
+        sin tener que mover las otras clases, en este caso
+        le llamo BicicleStategy y que implemente a IStrategy.
+
+> * Clase BicycleStrategy que implementa de IStrategy
+![video18BicycleStrategy](./imgReadme/video18BicycleStrategy.jpg)
+
+> * Program Class
+![video18program](./imgReadme/video18program.jpg)
+
+> * Corrida
+![video18corrida](./imgReadme/video18corrida.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
