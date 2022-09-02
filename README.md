@@ -884,9 +884,41 @@ Codificando
 ![video18corrida](./imgReadme/video18corrida.jpg)
 
 
+## Video 19 Implementacion en ASP de Strategy
+
+Vamos a ver la solucion del UnitOfWork, y lo que icimos en el
+ultimo video de UnitOfWork, es que teniamos 2 formas de 
+agregar a la base de datos.
+* Una era agregar una Cerveza ya con su marca asignada
+* La otra era agregar la marca y asignarla a la cerveza
+y la guardabamos.
 
 
+Entonces aqui hay 2 estrategias.
+* Cerveza viene con marca existente
+* Cerveza viene con nueva marca
 
+Hacemos una refactorizacion de lo que ya se tenia para agregar 
+los siguiente.
+
+> * ![video19Refactorizacion](./imgReadme/video19Refactorizacion.jpg)
+
+Empezamos con el Patron estrategia.
+
+> * Interfaz IBeerStrategy
+![video19IBeerStrategy](./imgReadme/video19IBeerStrategy.jpg)
+
+> * Clase BeerStrategy 
+![video19BeerStrategy](./imgReadme/video19BeerStrategy.jpg)
+
+> * Clase BeerStrategyWithBrand
+![video19BeerStrategyWithBrand](./imgReadme/video19BeerStrategyWithBrand.jpg)
+
+> * ControllerBeer Add
+![video19ControllerBeer](./imgReadme/video19ControllerBeer.jpg)
+
+> * Corrida
+![video19Corrida](./imgReadme/video19Corrida.jpg)
 
 
 

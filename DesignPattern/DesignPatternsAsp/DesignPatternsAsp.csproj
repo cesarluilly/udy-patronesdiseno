@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Strategies\BeerContext.cs~RF5ca067fa.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DesignPatterns.Models\DesignPatterns.Models.csproj" />
     <ProjectReference Include="..\DesignPatterns.Repository\DesignPatterns.Repository.csproj" />
     <ProjectReference Include="..\Tools\Tools.csproj" />

@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.Models.Data;
 using DesignPatterns.Repository;
 using DesignPatternsAsp.Models.ViewModels;
+using DesignPatternsAsp.Strategies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -30,16 +31,7 @@ namespace DesignPatternsAsp.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            var brands = _unitOfWork.Brands.Get();
-
-            //                                      //View Bag nos sirve para que podamos
-            //                                      //  mandar informacion a la vista.
-
-            //                                      //El que va a ser el valor del select list en html
-            //                                      //  va a ser el "BrandId" y el campo visual es el "Name"
-            ViewBag.Brands = new SelectList(brands, "Pk", "Name");
-
-
+            GetBrandsData();
             return View();
         }
 
@@ -51,35 +43,53 @@ namespace DesignPatternsAsp.Controllers
                 !ModelState.IsValid
                 )
             {
-                var brands = _unitOfWork.Brands.Get();
-                ViewBag.Brands = new SelectList(brands, "Pk", "Name");
+                GetBrandsData();
                 //                                      //Y en caso de que esto sea invalido, 
                 //                                      //  vamos a regresar a la misma vista pero 
                 //                                      //  con los datos que tenia anteriomente.
                 return View("Add", beerVM);
             }
 
-            var beer = new Beer();
-            beer.Name = beerVM.Name;
-            beer.Style = beerVM.Style;
-            if (beerVM.BrandId == null)
-            {
-                var brand = new Brand();
-                brand.Name = beerVM.OtherBrand;
-                _unitOfWork.Brands.Add(brand);
-                _unitOfWork.Save();
+            var context = beerVM.BrandId == null ?
+                new BeerContext(new BeerWithBrandStrategy()) :
+                new BeerContext(new BeerStrategy());
+            context.Add(beerVM, _unitOfWork);
 
-                beer.PkBrand = brand.Pk;
-            }
-            else { beer.PkBrand = beerVM.BrandId; }
-            _unitOfWork.Beers.Add(beer);
-            //                                      //Como podemos ver, hasta este punto se va a hacer
-            //                                      //  una sola conexion.
-            _unitOfWork.Save();
+            //var beer = new Beer();
+            //beer.Name = beerVM.Name;
+            //beer.Style = beerVM.Style;
+            //if (beerVM.BrandId == null)
+            //{
+            //    var brand = new Brand();
+            //    brand.Name = beerVM.OtherBrand;
+            //    _unitOfWork.Brands.Add(brand);
+            //    _unitOfWork.Save();
+
+            //    beer.PkBrand = brand.Pk;
+            //}
+            //else { beer.PkBrand = beerVM.BrandId; }
+            //_unitOfWork.Beers.Add(beer);
+            ////                                      //Como podemos ver, hasta este punto se va a hacer
+            ////                                      //  una sola conexion.
+            //_unitOfWork.Save();
 
             //                                      //Y si todo es exitoso entonces
             //                                      //  quiero que me regrese al Index.
             return RedirectToAction("Index");
         }
+
+        #region HELPERS
+        private void GetBrandsData()
+        {
+            var brands = _unitOfWork.Brands.Get();
+
+            //                                      //View Bag nos sirve para que podamos
+            //                                      //  mandar informacion a la vista.
+
+            //                                      //El que va a ser el valor del select list en html
+            //                                      //  va a ser el "BrandId" y el campo visual es el "Name"
+            ViewBag.Brands = new SelectList(brands, "Pk", "Name");
+        }
+        #endregion
     }
 }
