@@ -1,20 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
-using DesignPattern.StrategyPattern;
+using DesignPattern.BuilderPattern;
 
-//                          //Quiero que se comporte como un
-//                          //  carro.
-var context = new Context(new CarStrategy());
-context.Run();
+var builder = new PreparedAlcoholicDrinkConcreteBuilder();
+var barmanDirector = new BarmanDirector(builder);
 
-//                          //Quiero que se comporte como un
-//                          //  moto.
-context.Strategy = new MotoStrategy();
-context.Run();
+barmanDirector.PrepareMargarita();
 
-//                          //Quiero que se comporte como un
-//                          //  Bicicleta.
-context.Strategy = new BicycleStrategy();
-context.Run();
-
+var prepareDrink = builder.GetPrepareDrink();
+Console.WriteLine(prepareDrink.Result);

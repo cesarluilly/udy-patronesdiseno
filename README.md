@@ -921,11 +921,74 @@ Empezamos con el Patron estrategia.
 ![video19Corrida](./imgReadme/video19Corrida.jpg)
 
 
+# Seccion 9: Builder
+## Video 20 Explicacion de Builder
+
+Patron creacional que nos va a permitir crear objetos complejos, 
+este patron nos viene bien cuando la creacion de los objetos, 
+implica tener un constructor enorme, y con el Patron Builde, 
+nos va a permitir crear distintos objetos del mismo tipo 
+de clase de una manera muy sencilla.
+
+Se compone por
+> * **Producto**.- El producto es el objeto complejo, y este puede ser
+muchisimas cosas, este patron viene bien con el uso de la 
+facturacion electronica, porque la factura en si es un objeto
+complejo que tiene muchas cosas que pueden variar ya de dependiendo
+el pais puede variar la facturacion, y es por eso que es complejo.
 
 
+> * **ConcreteBuilder** .- Este es el encargado de crear el 
+objeto es decir, nuestro producto final por medio de una serie
+de pasos, un objeto complejo, puede estar echo por distintos
+pasos. Por ejemplo, los pasos para construir un auto deportivo
+a un camion, los pasos para construilos quizas son parecidos,
+pero no iguales, y estos pasos pueden variar o incluso el orden
+de estos pasos tambien pueden variar. Este va a tener la
+implementacion de la interfaz IBuilder.
 
+> * **IBuilder** .- Solo es para la organizacion ya que 
+podemos tener distintos ConcreteBuilder que crean distintos
+productos.
 
+> * **Director** .- El director es el que se va a encargar de
+decir, mira builder, vamos a ejecutar este metodo primero, 
+despues este otro, etc. y es el que te va a dar la direccion
+de como crear el objeto concreto y ConcreteBuilde nos va
+a decir como crearlo y director nos va a decir cual
+ejecutar primero, segundo, etc. 
+Dependiendo el autor, tu vas a saber que regularmente
+el director va a mandar los valores pero a veses lo va
+a saber con el control Builder, las 2 son maneras de 
+trabajar y va a ir bien.
 
+![video20BuilderDiagrama](./imgReadme/video20BuilderDiagrama.jpg)
+
+La manera de detectar para saber si necesitamos utiliza el 
+patron Builder sera cuando identifiquemos que hay una
+clase donde haya diferentes configuraciones en su constructor.
+
+> * Creamos la clase PreparedDrink
+![video20PreparedDrinkClass](./imgReadme/video20PreparedDrinkClass.jpg)
+
+> * Creamos la Interfaz IBuilder
+![video20InterfazIBuilder](./imgReadme/video20InterfazIBuilder.jpg)
+
+> * Creamos la clase PreparedAlcoholicDrinkConcreteBuilder
+![video20ConcreteClass1](./imgReadme/video20ConcreteClass1.jpg)
+![video20ConcreteClass2](./imgReadme/video20ConcreteClass2.jpg)
+![video20ConcreteClass3](./imgReadme/video20ConcreteClass3.jpg)
+
+> * Creamos la clase BartmanDirector
+![video20BarmanDirectorClass1](./imgReadme/video20BarmanDirectorClass1.jpg)
+![video20BarmanDirectorClass2](./imgReadme/video20BarmanDirectorClass2.jpg)
+
+> * Vamos a la Clase Program **(De esta forma creamos objetos
+complejos sin necesidad de tantos constructores)**
+![video20Program](./imgReadme/video20Program.jpg)
+
+> * Corrida
+![video20Corrida](./imgReadme/video20Corrida.jpg)
 
 
 
