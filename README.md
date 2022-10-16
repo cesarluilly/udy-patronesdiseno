@@ -990,12 +990,64 @@ complejos sin necesidad de tantos constructores)**
 > * Corrida
 ![video20Corrida](./imgReadme/video20Corrida.jpg)
 
+## Video 21 Patron Builder implementado en biblioteca a utilizar en ASP 
+
+Imaginar que tenemos que crear 2 o varios distintos archivos, 
+pero con una configuracion en especial, es decir algo caotico
+con muchos parametros y quiero que el archivo se 
+* Se genere en JSON
+* Se genere con separacion de pipes
+* Se Encripte
+* Quiero que se genere a partir de una base de datos de alguna
+tabla
+
+y toda esta configuracion puede cambiar, como por ejemplo, 
+que este en minuscula, mayuscula, etc.
+
+Estas configuraciones van creando la necesidad de tener 
+un objeto que tenga complejidad y todo esto se va a hacer en un 
+constructor.
+
+El patron de diseño builder nos va a ayudar con estas tareas, 
+sobre todo si necesitamos nuevos tipos de archivos para 
+generarlos. 
+
+Esto es muy comun en los trabajos de generar archivos de
+este tipo, sobre todo cuando compartimos con distintos 
+tipos de fuente de datos.
+
+Tambien el patron de diseño Builder se puede utilizar
+para la facturacion electronica de tu pais ya que tambien
+puede caer en este tipo de necesidades. 
+
+Lo que vamos a tener al final es un objeto que va a representa
+el producto, y este objeto va a generar dichos archivos ya
+con la configuracion establecida, vamos a utilizar un director
+el cual nos va a dar el tipo de archivo que vamos a necesitar 
+como por ejemplo json, separado por pipes etc, y con 
+ayuda del concrete builder vamos a crear estas tareas.
+
+Vamos a separar las tareas de la configuracion paso por paso
+y el director va a manipular esos pasos.
+
+Vamos a Codificar.
+
+* Creamos la interfaz IBuilderGenerator
+
+![video21-Ibuilder](./imgReadme/video21-Ibuilder.jpg)
+
+* Creamos la clase Generator.
+![video21Generator](./imgReadme/video21Generator.jpg)
+
+* Creamos la clase GeneratorConcreteBuilder
+![video21GeneratorConcreteBuilder](./imgReadme/video21GeneratorConcreteBuilder.jpg)
+
+* Creamos la clase GeneratorDirector
+![video21GeneratorDirector](./imgReadme/video21GeneratorDirector.jpg)
 
 
-
-
-
-
+En la siguiente video vamos a ver como implementar estas clases
+creadas en ASP.Net 
 
 
 
