@@ -1068,7 +1068,45 @@ creadas en ASP.Net
 ![video22archivoGenerado](./imgReadme/video22archivoGenerado.jpg)
 
 
+# Seccion 10: State
+## Video 23 Explicacion de State Pattern
 
+Es un patron de diseño de comportamiento por lo cual va a servir
+para tener un comportamiento de nuestros objetos dependiendo del
+estado en el cual se encuentre nuestro objeto.
+
+Es decir, dependiendo del estado del objeto, este va a actuar
+de alguna forma.
+
+Por ejemplo, podemos tener un objeto del tipo que maneje una 
+reproduccion de un video, imaginemos el reproductor de 
+youtube, tenemos un objeto que genera ese reproductor y 
+ese objeto tiene distintos estados, dependiendo su estado
+va a comportarse de una u otra forma. 
+
+Por ejemplo 
+* Hay un estado que cuando entras a la pagina, 
+el video esta detenido y ese es un estado.
+
+* Cuando el video esta reproduciendose, ese es otro estado.
+
+* Cuando el video ha terminado, ese es otro estado.
+
+* Cuando el video no se esta cargando, ese es otro estado.
+
+> Y dependiente cada estado, el objeto se va a comportar 
+diferente, entonces el estado y el comportamiento estan 
+ligados, enlazados, relacionados en el patron de diseño 
+**State**
+
+Otro ejemplo seria el de un cliente en un sistema. 
+Un cliente puede ser un nuevo cliente, un cliente con
+adeudo, un cliente eliminado y dependiendo esto, 
+sus compras pueden tener un comportamiento distinto.
+
+![video23diagramaPatternState](./imgReadme/video23diagramaPatternState.jpg)
+
+**ME QUEDE EN EL MINUTO 2**
 
 
 
