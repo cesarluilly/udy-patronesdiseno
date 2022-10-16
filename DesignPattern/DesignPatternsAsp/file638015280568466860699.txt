@@ -1,0 +1,1 @@
+["Corona","CervezaHeineken","NuevaCerveza","CervezaFinal","NuevaCervezaCesar","NuevaCervezaWithoutBrand","Beer1","Beer2"]

@@ -1049,6 +1049,23 @@ Vamos a Codificar.
 En la siguiente video vamos a ver como implementar estas clases
 creadas en ASP.Net 
 
+## Video 22 Implementacion en ASP
+
+* Creamos nuestro controlador `GeneratorFileController`.
+![video22GeneratorFileController](./imgReadme/video22GeneratorFileController.jpg)
+
+* Creamos nuestra vista del servicio **Index** del controlador `GeneratorFileController`.
+![video22Vista](./imgReadme/video22Vista.jpg)
+
+* Inyectamos en el Startup(o Program) la clase 
+`GeneratorConcreteBuilder`
+![video22inyeccionGeneratorConcrete](./imgReadme/video22inyeccionGeneratorConcrete.jpg)
+
+* Corrida
+![video22Corrida](./imgReadme/video22Corrida.jpg)
+
+* Archivo Json generado
+![video22archivoGenerado](./imgReadme/video22archivoGenerado.jpg)
 
 
 

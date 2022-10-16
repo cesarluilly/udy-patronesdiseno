@@ -3,6 +3,7 @@ using DesignPatterns.Repository;
 using DesignPatternsAsp.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Tools.Earn;
+using Tools.Generator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +45,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 //                          //  se va a inyectar magicamente en el constructor
 //                          //  de la clase UnitOfWork.
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<GeneratorConcreteBuilder>();
 
 var app = builder.Build();
 
