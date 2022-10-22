@@ -1104,10 +1104,41 @@ Un cliente puede ser un nuevo cliente, un cliente con
 adeudo, un cliente eliminado y dependiendo esto, 
 sus compras pueden tener un comportamiento distinto.
 
+**El patron de diseño estado se compone de estas 3 entidades.**
+* Context.- Objeto que tiene estados.
+* Interface.- Hace la representacion de las clases que van
+a implementar los estados (tiene el metodo Handle). 
+* Concrete.- Clases que implementan el estado.
+
+El metodo request del context se va a comportar de forma
+diferente dependiendo el estado en el cual se encuentre.
+
 ![video23diagramaPatternState](./imgReadme/video23diagramaPatternState.jpg)
 
-**ME QUEDE EN EL MINUTO 2**
+Codificacion.
+* Agrego la interface IState.
+![video23Interface](./imgReadme/video23Interface.jpg)
 
+* Creo el estado `NewState`
+![video23NewState](./imgReadme/video23NewState.jpg)
+
+* Creo el estado `NotDebtorState`
+![video23NotDebtorState](./imgReadme/video23NotDebtorState.jpg)
+
+* Creo es estado `DebtorState`
+![video23DebtorState](./imgReadme/video23DebtorState.jpg)
+
+* Creo la clase `CustomerContext`
+![video23CustomerContext](./imgReadme/video23CustomerContext.jpg)
+
+* Clase `Program`
+![video23Program](./imgReadme/video23Program.jpg)
+
+* Corrida de aplicacion.
+![video23Corrida](./imgReadme/video23Corrida.jpg)
+
+# Certificado de Finalizacion
+![UdyPatronesDeDiseño](./imgReadme/UdyPatronesDeDiseno.jpg)
 
 
 
