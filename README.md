@@ -1140,7 +1140,135 @@ Codificacion.
 # Certificado de Finalizacion
 ![UdyPatronesDeDiseño](./imgReadme/UdyPatronesDeDiseno.jpg)
 
+# Tips de codigo por Chatgpt
+## Como usar las herencias y las interfaces
+La pregunta que a menudo se hace al considerar si una interfaz es apropiada es "¿puede hacer?" o "¿tiene la capacidad de?". 
 
+Por ejemplo, si tienes una clase `Dog`, podrías preguntarte: "¿Puede el perro correr?". Si la respuesta es sí, entonces puedes crear una interfaz `IRunner` (ICorredor) e implementarla en la clase `Dog`. 
+
+Esto se debe a que las interfaces se utilizan para definir habilidades o comportamientos que una clase puede realizar, independientemente de dónde se encuentre en la jerarquía de herencia. 
+
+Por lo tanto, la interfaz se enfoca más en lo que el objeto puede hacer (comportamiento) en lugar de lo que el objeto es (herencia). 
+
+En resumen, la pregunta para la herencia es "¿Es un(a)?" y para las interfaces es "¿Puede hacer?" o "¿Tiene la capacidad de?".
+
+## Ejemplo de implementacion de interfaces y su uso
+En C#, una clase puede implementar múltiples interfaces. Aquí tienes un ejemplo de una clase que implementa tres interfaces diferentes:
+
+```csharp
+public interface IRunner
+{
+    void Run();
+}
+
+public interface ISwimmer
+{
+    void Swim();
+}
+
+public interface IClimber
+{
+    void Climb();
+}
+
+public class Triathlete : IRunner, ISwimmer, IClimber
+{
+    public void Run()
+    {
+        Console.WriteLine("Running...");
+    }
+
+    public void Swim()
+    {
+        Console.WriteLine("Swimming...");
+    }
+
+    public void Climb()
+    {
+        Console.WriteLine("Climbing...");
+    }
+}
+```
+
+En este ejemplo, la clase `Triathlete` implementa las interfaces `IRunner`, `ISwimmer`, y `IClimber`, y por lo tanto debe proporcionar implementaciones de los métodos `Run`, `Swim`, y `Climb`.
+
+Ahora puedes utilizar un objeto `Triathlete` como cualquiera de sus interfaces:
+
+```csharp
+Triathlete athlete = new Triathlete();
+
+// Use as a IRunner
+IRunner runner = athlete;
+runner.Run();
+
+// Use as a ISwimmer
+ISwimmer swimmer = athlete;
+swimmer.Swim();
+
+// Use as a IClimber
+IClimber climber = athlete;
+climber.Climb();
+
+// Use directly
+athlete.Run();
+athlete.Swim();
+athlete.Climb();
+```
+
+Este código crea un `Triathlete` y luego lo utiliza como `IRunner`, `ISwimmer`, y `IClimber`. También puedes invocar los métodos directamente en el objeto `athlete`. Cada interfaz proporciona una vista del objeto `Triathlete` que solo incluye los métodos de esa interfaz en particular.
+
+## A traves de interfaces asignarles un objeto que viene de herencia, pero que un objeto pueda acceder a una propiedad de una interfaz, pero que la otra interfaz contenga info de propiedades de la otra interfaz
+```csharp
+public interface ITestA
+{
+    void MetodoA();
+}
+
+public interface ITestB : ITestA
+{
+    void MetodoB();
+}
+
+public class A : ITestA
+{
+    public void MetodoA()
+    {
+        Console.WriteLine("Implementación del MetodoA en la clase A");
+    }
+}
+
+public class a : A
+{
+    // No necesita implementar ningún método extra,
+    // porque hereda el MétodoA de la clase A
+}
+
+public class b : A, ITestB
+{
+    public void MetodoB()
+    {
+        Console.WriteLine("Implementación del MetodoB en la clase b");
+    }
+}
+
+public class Test
+{
+    public static void Main()
+    {
+        A objetoA = new A();
+        objetoA.MetodoA();  // "Implementación del MetodoA en la clase A"
+
+        ITestA objetoa = new a();
+        objetoa.MetodoA();  // "Implementación del MetodoA en la clase A"
+
+        ITestB objetob = new b();
+        objetob.MetodoA();  // "Implementación del MetodoA en la clase A"
+        objetob.MetodoB();  // "Implementación del MetodoB en la clase b"
+    }
+}
+```
+
+En este código, la clase `a` hereda de la clase `A` e indirectamente implementa `ITestA` a través de la herencia. La clase `b` hereda de la clase `A` e implementa `ITestB`, que a su vez hereda de `ITestA`. Por lo tanto, `b` tiene implementaciones para ambos `MetodoA()` y `MetodoB()`.
 
 
 
